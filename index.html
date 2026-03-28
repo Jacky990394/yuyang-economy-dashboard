@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>昱揚實體經濟觀測站 | AI 數據戰情室</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* 昱揚專屬：極簡禪意黑科技風格 */
+        body { 
+            background-color: #121212; 
+            color: #E0E0E0; 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+        }
+        .card { 
+            background-color: #1E1E1E; 
+            border-radius: 12px; 
+            border: 1px solid #333; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body class="p-6 md:p-12">
+
+    <header class="mb-10 text-center">
+        <h1 class="text-3xl md:text-5xl font-bold text-white tracking-widest mb-3">昱揚工程｜實體經濟觀測站</h1>
+        <p class="text-gray-400 text-sm md:text-lg">用科學數據，洞察資產防護的黃金時機</p>
+    </header>
+
+    <div class="max-w-5xl mx-auto grid grid-cols-1 gap-6">
+        
+        <div class="card p-6 md:p-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                <h2 class="text-2xl font-semibold border-l-4 border-blue-500 pl-4 mb-2 md:mb-0">水庫水情與氣候防護指數</h2>
+                <span id="warning-badge" class="px-4 py-1.5 text-sm font-bold rounded-full bg-gray-800 text-gray-400">
+                    讀取資料中...
+                </span>
+            </div>
+            
+            <p class="text-sm text-gray-400 mb-8 leading-relaxed">
+                追蹤科技業與重工業命脈（如寶二、石門、曾文水庫）。當水情吃緊、極端氣候風險上升，代表傳統建材耗損加速。此時正是佈局高階建築防護（恆久拋光地坪、AI 防漏水）的最佳時機。
+            </p>
+            
+            <div class="relative h-72 md:h-96 w-full">
+                <canvas id="waterChart"></canvas>
+            </div>
+            
+            <div class="mt-6 text-sm text-gray-500 text-right" id="update-time">
+                最後更新時間：讀取中...
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // 使用 fetch 自動去抓取同一個資料夾下的 water_data.json
+        fetch('water_data.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('找不到 json 檔案');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // 1. 更新文字與時間
+                document.getElementById('update-time').innerText = "機器人最後更新：" + data.update_time;
+                
+                const badge = document.getElementById('warning-badge');
+                badge.innerText = "狀態：" + data.overall_warning_level;
+                
+                // 2. 判斷燈號顏色 (綠燈 > 60%, 黃燈 30~60%, 紅燈 < 30%)
+                if(data.average_storage_rate > 60) {
+                    badge.className = "px-4 py-1.5 text-sm font-bold rounded-full bg-green-900 text-green-300 border border-green-700";
+                } else if (data.average_storage_rate > 30) {
+                    badge.className = "px-4 py-1.5 text-sm font-bold rounded-full bg-yellow-900 text-yellow-300 border border-yellow-700 shadow-[0_0_15px_rgba(234,179,8,0.3)]";
+                } else {
+                    badge.className = "px-4 py-1.5 text-sm font-bold rounded-full bg-red-900 text-red-300 border border-red-700 shadow-[0_0_15px_rgba(239,68,68,0.5)]";
+                }
+
+                // 3. 畫出 Chart.js 圖表
+                const ctx = document.getElementById('waterChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: data.history_labels,
+                        datasets: [{
+                            label: '平均蓄水率 (%)',
+                            data: data.history_data,
+                            borderColor: '#3B82F6', // 科技藍折線
+                            backgroundColor: 'rgba(59, 130, 246, 0.15)', // 藍色漸層填滿
+                            borderWidth: 3,
+                            pointBackgroundColor: '#121212',
+                            pointBorderColor: '#3B82F6',
+                            pointBorderWidth: 2,
+                            pointRadius: 4,
+                            pointHoverRadius: 6,
+                            fill: true,
+                            tension: 0.4 // 讓折線有平滑的弧度
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } }, // 隱藏圖例保持極簡
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                                ticks: { color: '#888' }
+                            },
+                            x: {
+                                grid: { display: false },
+                                ticks: { color: '#888' }
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('讀取數據失敗:', error);
+                const badge = document.getElementById('warning-badge');
+                badge.innerText = "資料讀取失敗，請確認是否使用伺服器環境開啟";
+                badge.className = "px-4 py-1.5 text-sm font-bold rounded-full bg-red-900 text-red-300 border border-red-700";
+            });
+    </script>
+</body>
+</html>
