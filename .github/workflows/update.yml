@@ -1,4 +1,4 @@
-name: 每日自動更新水情指數
+name: 每日自動更新水情與經濟指數
 
 on:
   schedule:
@@ -19,17 +19,21 @@ jobs:
       with:
         python-version: '3.9'
 
-    - name: 3. 安裝網路抓取工具 (requests)
-      run: pip install requests
+    - name: 3. 安裝網路抓取工具
+      run: |
+        pip install requests
+        pip install urllib3
 
-    - name: 4. 派機器人去水利署抓資料！
-      run: python update_water.py
+    - name: 4. 派機器人去抓資料！(水、電、營造全開)
+      run: |
+        python update_water.py
+        python update_power.py
+        python update_construction.py
 
     - name: 5. 將最新數據寫回雲端展示窗
       run: |
         git config --global user.name "GitHub Actions Bot"
         git config --global user.email "actions@github.com"
-        git add water_data.json
-        # 如果數據有變動就存檔，沒變動就不做任何事
-        git commit -m "🤖 昱揚機器人：自動更新今日水情" || exit 0
+        git add .
+        git commit -m "🤖 昱揚機器人：自動更新三大指數" || exit 0
         git push
