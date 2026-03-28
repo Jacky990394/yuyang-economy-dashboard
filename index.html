@@ -28,6 +28,8 @@
         <p class="text-gray-400 text-sm md:text-lg">用科學數據，洞察資產防護的黃金時機</p>
     </header>
 
+    // 水圖=========================================================
+
     <div class="max-w-5xl mx-auto grid grid-cols-1 gap-6">
         
         <div class="card p-6 md:p-8">
@@ -52,6 +54,55 @@
         </div>
 
     </div>
+
+    // 電圖=========================================================
+    <div class="card p-6 md:p-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                <h2 class="text-2xl font-semibold border-l-4 border-yellow-500 pl-4 mb-2 md:mb-0">工業用電與備轉容量指數</h2>
+                <span id="power-warning-badge" class="px-4 py-1.5 text-sm font-bold rounded-full bg-gray-800 text-gray-400">
+                    讀取資料中...
+                </span>
+            </div>
+            
+            <p class="text-sm text-gray-400 mb-8 leading-relaxed">
+                追蹤全台電網備轉容量率。當指數跌破 10% (黃/紅燈)，代表廠辦面臨限電與降壓風險。企業對廠房 ESG 節能、屋頂隔熱降溫、AI 智慧用電監測的需求將大幅上升，是推展綠色防護工程的關鍵指標。
+            </p>
+            
+            <div class="relative h-72 md:h-96 w-full">
+                <canvas id="powerChart"></canvas>
+            </div>
+            
+            <div class="mt-6 text-sm text-gray-500 text-right" id="power-update-time">
+                最後更新時間：讀取中...
+            </div>
+     </div>
+
+    // 營造圖=========================================================
+
+     <div class="card p-6 md:p-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                <h2 class="text-2xl font-semibold border-l-4 border-purple-500 pl-4 mb-2 md:mb-0">營造物價與建材成本指數</h2>
+                <span id="const-warning-badge" class="px-4 py-1.5 text-sm font-bold rounded-full bg-gray-800 text-gray-400">
+                    讀取資料中...
+                </span>
+            </div>
+            
+            <p class="text-sm text-gray-400 mb-8 leading-relaxed">
+                追蹤國內營造工程總體物價（包含水泥、砂石、工資等）。當指數維持高檔或亮起紅燈，代表傳統反覆修繕的成本極度高昂。此時向業主推廣「一次性高階防護」（如 Koster 防水、鋰基固化地坪），具備最強的成本說服力與投資效益。
+            </p>
+            
+            <div class="relative h-72 md:h-96 w-full">
+                <canvas id="constChart"></canvas>
+            </div>
+            
+            <div class="mt-6 text-sm text-gray-500 text-right" id="const-update-time">
+                最後更新時間：讀取中...
+            </div>
+      </div>
+
+    // XXXX圖=========================================================
+
+
 
     <script>
         // 使用 fetch 自動去抓取同一個資料夾下的 water_data.json
@@ -124,6 +175,131 @@
                 badge.innerText = "資料讀取失敗，請確認是否使用伺服器環境開啟";
                 badge.className = "px-4 py-1.5 text-sm font-bold rounded-full bg-red-900 text-red-300 border border-red-700";
             });
+
+        // ==========================================
+        // 讀取電力指數 2026/03/28 19:43
+        // ==========================================
+        fetch('power_data.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('power-update-time').innerText = "機器人最後更新：" + data.update_time;
+                
+                const badge = document.getElementById('power-warning-badge');
+                badge.innerText = "狀態：" + data.overall_warning_level;
+                
+                // 台電燈號邏輯
+                if(data.average_reserve_rate > 10) {
+                    badge.className = "px-4 py-1.5 text-sm font-bold rounded-full bg-green-900 text-green-300 border border-green-700";
+                } else if (data.average_reserve_rate > 6) {
+                    badge.className = "px-4 py-1.5 text-sm font-bold rounded-full bg-yellow-900 text-yellow-300 border border-yellow-700 shadow-[0_0_15px_rgba(234,179,8,0.3)]";
+                } else {
+                    badge.className = "px-4 py-1.5 text-sm font-bold rounded-full bg-red-900 text-red-300 border border-red-700 shadow-[0_0_15px_rgba(239,68,68,0.5)]";
+                }
+
+                const ctx = document.getElementById('powerChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: data.history_labels,
+                        datasets: [{
+                            label: '備轉容量率 (%)',
+                            data: data.history_data,
+                            borderColor: '#EAB308', // 能源黃折線
+                            backgroundColor: 'rgba(234, 179, 8, 0.15)', // 黃色漸層填滿
+                            borderWidth: 3,
+                            pointBackgroundColor: '#121212',
+                            pointBorderColor: '#EAB308',
+                            pointBorderWidth: 2,
+                            pointRadius: 4,
+                            pointHoverRadius: 6,
+                            fill: true,
+                            tension: 0.4 
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } }, 
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 30, // 備轉容量率通常在 0~30 之間
+                                grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                                ticks: { color: '#888' }
+                            },
+                            x: {
+                                grid: { display: false },
+                                ticks: { color: '#888' }
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => console.error('電力數據讀取失敗:', error));
+
+
+        // ==========================================
+        // 讀取營造工程物價指數. 2026/03/28 20:02
+        // ==========================================
+        fetch('construction_data.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('const-update-time').innerText = "機器人最後更新：" + data.update_time;
+                
+                const badge = document.getElementById('const-warning-badge');
+                badge.innerText = "狀態：" + data.overall_warning_level;
+                
+                // 營造指數燈號邏輯
+                if(data.average_cost_index >= 110) {
+                    badge.className = "px-4 py-1.5 text-sm font-bold rounded-full bg-red-900 text-red-300 border border-red-700 shadow-[0_0_15px_rgba(239,68,68,0.5)]";
+                } else if (data.average_cost_index >= 105) {
+                    badge.className = "px-4 py-1.5 text-sm font-bold rounded-full bg-yellow-900 text-yellow-300 border border-yellow-700 shadow-[0_0_15px_rgba(234,179,8,0.3)]";
+                } else {
+                    badge.className = "px-4 py-1.5 text-sm font-bold rounded-full bg-green-900 text-green-300 border border-green-700";
+                }
+
+                const ctx = document.getElementById('constChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: data.history_labels,
+                        datasets: [{
+                            label: '營造工程物價總指數',
+                            data: data.history_data,
+                            borderColor: '#A855F7', // 尊貴紫折線
+                            backgroundColor: 'rgba(168, 85, 247, 0.15)', // 紫色漸層填滿
+                            borderWidth: 3,
+                            pointBackgroundColor: '#121212',
+                            pointBorderColor: '#A855F7',
+                            pointBorderWidth: 2,
+                            pointRadius: 4,
+                            pointHoverRadius: 6,
+                            fill: true,
+                            tension: 0.4 
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } }, 
+                        scales: {
+                            y: {
+                                // 物價指數通常在 90~130 之間浮動，我們不從 0 開始，讓波動更明顯
+                                min: 90, 
+                                max: 130, 
+                                grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                                ticks: { color: '#888' }
+                            },
+                            x: {
+                                grid: { display: false },
+                                ticks: { color: '#888' }
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => console.error('營造數據讀取失敗:', error));
+
     </script>
 </body>
 </html>
