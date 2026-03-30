@@ -36,7 +36,7 @@ jobs:
         python update_brent.py
         python update_lottery.py
         python update_gold.py
-        update_medical.py
+        python update_medical.py
 
     - name: 5. 將最新數據寫回雲端展示窗
       run: |
