@@ -30,6 +30,7 @@ jobs:
         python update_power.py
         python update_construction.py
         python update_license.py
+        python update_boba.py
 
     - name: 5. 將最新數據寫回雲端展示窗
       run: |
