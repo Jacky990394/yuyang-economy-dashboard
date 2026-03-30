@@ -26,10 +26,7 @@
                 <h2 class="text-2xl font-semibold border-l-4 border-blue-500 pl-4 mb-2 md:mb-0">指標一：重點水庫蓄水率</h2>
                 <span id="water-badge" class="px-4 py-1.5 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
             </div>
-            <p class="text-sm text-gray-400 mb-8 leading-relaxed">
-                <strong>資料來源：</strong>經濟部水利署<br>
-                <strong>計算方式：</strong>每日定時擷取寶山第二水庫、石門水庫、曾文水庫之最新有效蓄水百分比，計算算術平均值。
-            </p>
+            <p class="text-sm text-gray-400 mb-8 leading-relaxed"><strong>資料來源：</strong>經濟部水利署<br><strong>計算方式：</strong>每日定時擷取寶山第二水庫、石門水庫、曾文水庫之最新有效蓄水百分比，計算算術平均值。</p>
             <div class="relative h-72 w-full"><canvas id="waterChart"></canvas></div>
             <div class="mt-4 text-sm text-gray-500 text-right" id="water-update-time">最後更新時間：讀取中...</div>
         </div>
@@ -39,10 +36,7 @@
                 <h2 class="text-2xl font-semibold border-l-4 border-yellow-500 pl-4 mb-2 md:mb-0">指標二：電網備轉容量率</h2>
                 <span id="power-badge" class="px-4 py-1.5 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
             </div>
-            <p class="text-sm text-gray-400 mb-8 leading-relaxed">
-                <strong>資料來源：</strong>經濟部能源署 / 台灣電力公司<br>
-                <strong>計算方式：</strong>每日定時擷取政府公告之全台電網當日預估備轉容量率（%）。
-            </p>
+            <p class="text-sm text-gray-400 mb-8 leading-relaxed"><strong>資料來源：</strong>經濟部能源署 / 台灣電力公司<br><strong>計算方式：</strong>每日定時擷取政府公告之全台電網當日預估備轉容量率（%）。</p>
             <div class="relative h-72 w-full"><canvas id="powerChart"></canvas></div>
             <div class="mt-4 text-sm text-gray-500 text-right" id="power-update-time">最後更新時間：讀取中...</div>
         </div>
@@ -52,10 +46,7 @@
                 <h2 class="text-2xl font-semibold border-l-4 border-purple-500 pl-4 mb-2 md:mb-0">指標三：營造工程物價指數</h2>
                 <span id="const-badge" class="px-4 py-1.5 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
             </div>
-            <p class="text-sm text-gray-400 mb-8 leading-relaxed">
-                <strong>資料來源：</strong>行政院主計總處<br>
-                <strong>計算方式：</strong>定期擷取最新發布之營造工程物價總指數。
-            </p>
+            <p class="text-sm text-gray-400 mb-8 leading-relaxed"><strong>資料來源：</strong>行政院主計總處<br><strong>計算方式：</strong>定期擷取最新發布之營造工程物價總指數。</p>
             <div class="relative h-72 w-full"><canvas id="constChart"></canvas></div>
             <div class="mt-4 text-sm text-gray-500 text-right" id="const-update-time">最後更新時間：讀取中...</div>
         </div>
@@ -65,10 +56,7 @@
                 <h2 class="text-2xl font-semibold border-l-4 border-emerald-500 pl-4 mb-2 md:mb-0">指標四：建築物使用執照核發指數</h2>
                 <span id="license-badge" class="px-4 py-1.5 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
             </div>
-            <p class="text-sm text-gray-400 mb-8 leading-relaxed">
-                <strong>資料來源：</strong>內政部國土管理署 / 統計處<br>
-                <strong>計算方式：</strong>彙整並追蹤全台當期核發建築物使用執照之趨勢指數。
-            </p>
+            <p class="text-sm text-gray-400 mb-8 leading-relaxed"><strong>資料來源：</strong>內政部國土管理署 / 統計處<br><strong>計算方式：</strong>彙整並追蹤全台當期核發建築物使用執照之趨勢指數。</p>
             <div class="relative h-72 w-full"><canvas id="licenseChart"></canvas></div>
             <div class="mt-4 text-sm text-gray-500 text-right" id="license-update-time">最後更新時間：讀取中...</div>
         </div>
@@ -78,49 +66,58 @@
                 <h2 class="text-2xl font-semibold border-l-4 border-orange-500 pl-4 mb-2 md:mb-0">指標五：複合珍奶物價指數</h2>
                 <span id="boba-badge" class="px-4 py-1.5 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
             </div>
-            <p class="text-sm text-gray-400 mb-8 leading-relaxed">
-                <strong>資料來源：</strong>行政院主計總處 (60%) + 實體指標連鎖店 (40%)<br>
-                <strong>計算方式：</strong>將官方 CPI 飲料指數與民間實際手搖飲價格變化，以 60/40 權重融合計算之真實通膨觀測指標。
-            </p>
+            <p class="text-sm text-gray-400 mb-8 leading-relaxed"><strong>資料來源：</strong>行政院主計總處 (60%) + 實體指標連鎖店 (40%)<br><strong>計算方式：</strong>將官方 CPI 飲料指數與民間實際手搖飲價格變化，以 60/40 權重融合計算之真實通膨觀測指標。</p>
             <div class="relative h-72 w-full"><canvas id="bobaChart"></canvas></div>
             <div class="mt-4 text-sm text-gray-500 text-right" id="boba-update-time">最後更新時間：讀取中...</div>
+        </div>
+
+        <div class="card p-6 md:p-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                <h2 class="text-2xl font-semibold border-l-4 border-red-600 pl-4 mb-2 md:mb-0">指標六：95 無鉛汽油價格趨勢</h2>
+                <span id="gasoline-badge" class="px-4 py-1.5 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
+            </div>
+            <p class="text-sm text-gray-400 mb-8 leading-relaxed">
+                <strong>資料來源：</strong>台灣中油股份有限公司<br>
+                <strong>計算方式：</strong>定期擷取中油公告之 95 無鉛汽油每週零售價格（元/公升）。作為實體物流運輸與營造機具變動成本之觀測基準。
+            </p>
+            <div class="relative h-72 w-full"><canvas id="gasolineChart"></canvas></div>
+            <div class="mt-4 text-sm text-gray-500 text-right" id="gasoline-update-time">最後更新時間：讀取中...</div>
         </div>
 
     </div>
 
     <script>
-        // 設定所有圖表的 Y 軸強制從 0 開始 (min: 0)
         const chartOptions = { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { min: 0, grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#888' } }, x: { grid: { display: false }, ticks: { color: '#888' } } } };
 
         fetch('water_data.json').then(r => r.json()).then(data => {
-            document.getElementById('water-update-time').innerText = "系統更新：" + data.update_time;
-            document.getElementById('water-badge').innerText = "當前數值：" + data.average_storage_rate + " %";
+            document.getElementById('water-update-time').innerText = "系統更新：" + data.update_time; document.getElementById('water-badge').innerText = "當前數值：" + data.average_storage_rate + " %";
             new Chart(document.getElementById('waterChart').getContext('2d'), { type: 'line', data: { labels: data.history_labels, datasets: [{ data: data.history_data, borderColor: '#3B82F6', backgroundColor: 'rgba(59, 130, 246, 0.15)', borderWidth: 3, fill: true, tension: 0.4, pointRadius: 3 }] }, options: { ...chartOptions, scales: { y: { ...chartOptions.scales.y, max: 100 } } } });
         });
 
         fetch('power_data.json').then(r => r.json()).then(data => {
-            document.getElementById('power-update-time').innerText = "系統更新：" + data.update_time;
-            document.getElementById('power-badge').innerText = "當前數值：" + data.average_reserve_rate + " %";
+            document.getElementById('power-update-time').innerText = "系統更新：" + data.update_time; document.getElementById('power-badge').innerText = "當前數值：" + data.average_reserve_rate + " %";
             new Chart(document.getElementById('powerChart').getContext('2d'), { type: 'line', data: { labels: data.history_labels, datasets: [{ data: data.history_data, borderColor: '#EAB308', backgroundColor: 'rgba(234, 179, 8, 0.15)', borderWidth: 3, fill: true, tension: 0.4, pointRadius: 3 }] }, options: chartOptions });
         });
 
         fetch('construction_data.json').then(r => r.json()).then(data => {
-            document.getElementById('const-update-time').innerText = "系統更新：" + data.update_time;
-            document.getElementById('const-badge').innerText = "當前數值：" + data.average_cost_index;
+            document.getElementById('const-update-time').innerText = "系統更新：" + data.update_time; document.getElementById('const-badge').innerText = "當前數值：" + data.average_cost_index;
             new Chart(document.getElementById('constChart').getContext('2d'), { type: 'line', data: { labels: data.history_labels, datasets: [{ data: data.history_data, borderColor: '#A855F7', backgroundColor: 'rgba(168, 85, 247, 0.15)', borderWidth: 3, fill: true, tension: 0.4, pointRadius: 3 }] }, options: chartOptions });
         });
 
         fetch('license_data.json').then(r => r.json()).then(data => {
-            document.getElementById('license-update-time').innerText = "系統更新：" + data.update_time;
-            document.getElementById('license-badge').innerText = "當前數值：" + data.current_value;
+            document.getElementById('license-update-time').innerText = "系統更新：" + data.update_time; document.getElementById('license-badge').innerText = "當前數值：" + data.current_value;
             new Chart(document.getElementById('licenseChart').getContext('2d'), { type: 'line', data: { labels: data.history_labels, datasets: [{ data: data.history_data, borderColor: '#10B981', backgroundColor: 'rgba(16, 185, 129, 0.15)', borderWidth: 3, fill: true, tension: 0.4, pointRadius: 3 }] }, options: chartOptions });
         });
 
-        // 讀取珍奶指數 (新增)
         fetch('boba_data.json').then(r => r.json()).then(data => {
-            document.getElementById('boba-update-time').innerText = "系統更新：" + data.update_time;
-            document.getElementById('boba-badge').innerText = "當前數值：" + data.current_index;
+            document.getElementById('boba-update-time').innerText = "系統更新：" + data.update_time; document.getElementById('boba-badge').innerText = "當前數值：" + data.current_index;
             new Chart(document.getElementById('bobaChart').getContext('2d'), { type: 'line', data: { labels: data.history_labels, datasets: [{ data: data.history_data, borderColor: '#F97316', backgroundColor: 'rgba(249, 115, 22, 0.15)', borderWidth: 3, fill: true, tension: 0.4, pointRadius: 3 }] }, options: chartOptions });
+        });
+
+        // 讀取汽油指數 (新增)
+        fetch('gasoline_data.json').then(r => r.json()).then(data => {
+            document.getElementById('gasoline-update-time').innerText = "系統更新：" + data.update_time; document.getElementById('gasoline-badge').innerText = "當前售價：" + data.current_price + " 元/公升";
+            new Chart(document.getElementById('gasolineChart').getContext('2d'), { type: 'line', data: { labels: data.history_labels, datasets: [{ data: data.history_data, borderColor: '#DC2626', backgroundColor: 'rgba(220, 38, 38, 0.15)', borderWidth: 3, fill: true, tension: 0.4, pointRadius: 3 }] }, options: chartOptions });
         });
     </script>
 </body>
