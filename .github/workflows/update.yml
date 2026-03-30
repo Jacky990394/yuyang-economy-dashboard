@@ -23,6 +23,7 @@ jobs:
       run: |
         pip install requests
         pip install urllib3
+        pip install beautifulsoup4
 
     - name: 4. 派機器人去抓資料！(水、電、營造全開)
       run: |
