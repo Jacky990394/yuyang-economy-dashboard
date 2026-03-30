@@ -38,6 +38,7 @@ jobs:
         python update_gold.py
         python update_medical.py
         python update_housing_transfer.py
+        python update_floor_area.py
 
     - name: 5. 將最新數據寫回雲端展示窗
       run: |
