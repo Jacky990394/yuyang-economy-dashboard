@@ -76,12 +76,22 @@
                 <h2 class="text-2xl font-semibold border-l-4 border-red-600 pl-4 mb-2 md:mb-0">指標六：95 無鉛汽油價格趨勢</h2>
                 <span id="gasoline-badge" class="px-4 py-1.5 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
             </div>
-            <p class="text-sm text-gray-400 mb-8 leading-relaxed">
-                <strong>資料來源：</strong>台灣中油股份有限公司<br>
-                <strong>計算方式：</strong>定期擷取中油公告之 95 無鉛汽油每週零售價格（元/公升）。作為實體物流運輸與營造機具變動成本之觀測基準。
-            </p>
+            <p class="text-sm text-gray-400 mb-8 leading-relaxed"><strong>資料來源：</strong>台灣中油股份有限公司<br><strong>計算方式：</strong>定期擷取中油公告之 95 無鉛汽油每週零售價格。作為實體物流與營造機具變動成本之觀測基準。</p>
             <div class="relative h-72 w-full"><canvas id="gasolineChart"></canvas></div>
             <div class="mt-4 text-sm text-gray-500 text-right" id="gasoline-update-time">最後更新時間：讀取中...</div>
+        </div>
+
+        <div class="card p-6 md:p-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                <h2 class="text-2xl font-semibold border-l-4 border-teal-500 pl-4 mb-2 md:mb-0">指標七：布蘭特原油價格</h2>
+                <span id="brent-badge" class="px-4 py-1.5 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
+            </div>
+            <p class="text-sm text-gray-400 mb-8 leading-relaxed">
+                <strong>資料來源：</strong>Yahoo Finance (國際期貨市場)<br>
+                <strong>計算方式：</strong>定期擷取布蘭特原油期貨 (BZ=F) 最新結算價格。作為全球通膨源頭與大宗物資之先期觀測指標。
+            </p>
+            <div class="relative h-72 w-full"><canvas id="brentChart"></canvas></div>
+            <div class="mt-4 text-sm text-gray-500 text-right" id="brent-update-time">最後更新時間：讀取中...</div>
         </div>
 
     </div>
@@ -91,34 +101,4 @@
 
         fetch('water_data.json').then(r => r.json()).then(data => {
             document.getElementById('water-update-time').innerText = "系統更新：" + data.update_time; document.getElementById('water-badge').innerText = "當前數值：" + data.average_storage_rate + " %";
-            new Chart(document.getElementById('waterChart').getContext('2d'), { type: 'line', data: { labels: data.history_labels, datasets: [{ data: data.history_data, borderColor: '#3B82F6', backgroundColor: 'rgba(59, 130, 246, 0.15)', borderWidth: 3, fill: true, tension: 0.4, pointRadius: 3 }] }, options: { ...chartOptions, scales: { y: { ...chartOptions.scales.y, max: 100 } } } });
-        });
-
-        fetch('power_data.json').then(r => r.json()).then(data => {
-            document.getElementById('power-update-time').innerText = "系統更新：" + data.update_time; document.getElementById('power-badge').innerText = "當前數值：" + data.average_reserve_rate + " %";
-            new Chart(document.getElementById('powerChart').getContext('2d'), { type: 'line', data: { labels: data.history_labels, datasets: [{ data: data.history_data, borderColor: '#EAB308', backgroundColor: 'rgba(234, 179, 8, 0.15)', borderWidth: 3, fill: true, tension: 0.4, pointRadius: 3 }] }, options: chartOptions });
-        });
-
-        fetch('construction_data.json').then(r => r.json()).then(data => {
-            document.getElementById('const-update-time').innerText = "系統更新：" + data.update_time; document.getElementById('const-badge').innerText = "當前數值：" + data.average_cost_index;
-            new Chart(document.getElementById('constChart').getContext('2d'), { type: 'line', data: { labels: data.history_labels, datasets: [{ data: data.history_data, borderColor: '#A855F7', backgroundColor: 'rgba(168, 85, 247, 0.15)', borderWidth: 3, fill: true, tension: 0.4, pointRadius: 3 }] }, options: chartOptions });
-        });
-
-        fetch('license_data.json').then(r => r.json()).then(data => {
-            document.getElementById('license-update-time').innerText = "系統更新：" + data.update_time; document.getElementById('license-badge').innerText = "當前數值：" + data.current_value;
-            new Chart(document.getElementById('licenseChart').getContext('2d'), { type: 'line', data: { labels: data.history_labels, datasets: [{ data: data.history_data, borderColor: '#10B981', backgroundColor: 'rgba(16, 185, 129, 0.15)', borderWidth: 3, fill: true, tension: 0.4, pointRadius: 3 }] }, options: chartOptions });
-        });
-
-        fetch('boba_data.json').then(r => r.json()).then(data => {
-            document.getElementById('boba-update-time').innerText = "系統更新：" + data.update_time; document.getElementById('boba-badge').innerText = "當前數值：" + data.current_index;
-            new Chart(document.getElementById('bobaChart').getContext('2d'), { type: 'line', data: { labels: data.history_labels, datasets: [{ data: data.history_data, borderColor: '#F97316', backgroundColor: 'rgba(249, 115, 22, 0.15)', borderWidth: 3, fill: true, tension: 0.4, pointRadius: 3 }] }, options: chartOptions });
-        });
-
-        // 讀取汽油指數 (新增)
-        fetch('gasoline_data.json').then(r => r.json()).then(data => {
-            document.getElementById('gasoline-update-time').innerText = "系統更新：" + data.update_time; document.getElementById('gasoline-badge').innerText = "當前售價：" + data.current_price + " 元/公升";
-            new Chart(document.getElementById('gasolineChart').getContext('2d'), { type: 'line', data: { labels: data.history_labels, datasets: [{ data: data.history_data, borderColor: '#DC2626', backgroundColor: 'rgba(220, 38, 38, 0.15)', borderWidth: 3, fill: true, tension: 0.4, pointRadius: 3 }] }, options: chartOptions });
-        });
-    </script>
-</body>
-</html>
+            new Chart(document.getElementById('waterChart').getContext('2d'), { type: 'line', data: { labels: data.history_labels, datasets: [{ data: data.history_data, borderColor: '#3B82F6', backgroundColor: 'rgba(59, 130, 246, 0.
