@@ -28,85 +28,94 @@
 
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-        <div class="card p-5" onclick="openModal('brentChart', '指標一：布蘭特原油價格', 'brent-badge')">
+        <div class="card p-5" onclick="openModal('brentChart', '指標一：布蘭特原油 (美元/桶)', 'brent-badge')">
             <div class="flex flex-col justify-between items-start mb-4">
-                <h2 class="text-lg font-semibold border-l-4 border-teal-500 pl-3 mb-2">指標一：布蘭特原油</h2>
+                <h2 class="text-lg font-semibold border-l-4 border-teal-500 pl-3 mb-2">指標一：布蘭特原油 (美元/桶)</h2>
                 <span id="brent-badge" class="px-3 py-1 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
             </div>
             <div class="relative h-48 w-full"><canvas id="brentChart"></canvas></div>
             <div class="mt-4 text-xs text-gray-500 text-right" id="brent-update-time">最後更新：讀取中...</div>
         </div>
 
-        <div class="card p-5" onclick="openModal('gasolineChart', '指標二：95 無鉛汽油價格', 'gasoline-badge')">
+        <div class="card p-5" onclick="openModal('gasolineChart', '指標二：95 無鉛汽油 (元/公升)', 'gasoline-badge')">
             <div class="flex flex-col justify-between items-start mb-4">
-                <h2 class="text-lg font-semibold border-l-4 border-red-600 pl-3 mb-2">指標二：95 無鉛汽油</h2>
+                <h2 class="text-lg font-semibold border-l-4 border-red-600 pl-3 mb-2">指標二：95 無鉛汽油 (元/公升)</h2>
                 <span id="gasoline-badge" class="px-3 py-1 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
             </div>
             <div class="relative h-48 w-full"><canvas id="gasolineChart"></canvas></div>
             <div class="mt-4 text-xs text-gray-500 text-right" id="gasoline-update-time">最後更新：讀取中...</div>
         </div>
 
-        <div class="card p-5" onclick="openModal('goldChart', '指標三：實體黃金賣出價 (新台幣/台兩)', 'gold-badge')">
+        <div class="card p-5" onclick="openModal('goldChart', '指標三：實體黃金 (新台幣/台兩)', 'gold-badge')">
             <div class="flex flex-col justify-between items-start mb-4">
-                <h2 class="text-lg font-semibold border-l-4 border-yellow-400 pl-3 mb-2">指標三：實體黃金 (10年)</h2>
+                <h2 class="text-lg font-semibold border-l-4 border-yellow-400 pl-3 mb-2">指標三：實體黃金 (新台幣/台兩)</h2>
                 <span id="gold-badge" class="px-3 py-1 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
             </div>
             <div class="relative h-48 w-full"><canvas id="goldChart"></canvas></div>
             <div class="mt-4 text-xs text-gray-500 text-right" id="gold-update-time">最後更新：讀取中...</div>
         </div>
 
-        <div class="card p-5" onclick="openModal('constChart', '指標四：營造工程物價指數', 'const-badge')">
+        <div class="card p-5" onclick="openModal('constChart', '指標四：營造工程物價 (指數)', 'const-badge')">
             <div class="flex flex-col justify-between items-start mb-4">
-                <h2 class="text-lg font-semibold border-l-4 border-purple-500 pl-3 mb-2">指標四：營造工程物價</h2>
+                <h2 class="text-lg font-semibold border-l-4 border-purple-500 pl-3 mb-2">指標四：營造工程物價 (指數)</h2>
                 <span id="const-badge" class="px-3 py-1 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
             </div>
             <div class="relative h-48 w-full"><canvas id="constChart"></canvas></div>
             <div class="mt-4 text-xs text-gray-500 text-right" id="const-update-time">最後更新：讀取中...</div>
         </div>
 
-        <div class="card p-5" onclick="openModal('licenseChart', '指標五：建築物使用執照核發指數', 'license-badge')">
+        <div class="card p-5" onclick="openModal('licenseChart', '指標五：使用執照核發 (指數)', 'license-badge')">
             <div class="flex flex-col justify-between items-start mb-4">
-                <h2 class="text-lg font-semibold border-l-4 border-emerald-500 pl-3 mb-2">指標五：使用執照核發</h2>
+                <h2 class="text-lg font-semibold border-l-4 border-emerald-500 pl-3 mb-2">指標五：使用執照核發 (指數)</h2>
                 <span id="license-badge" class="px-3 py-1 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
             </div>
             <div class="relative h-48 w-full"><canvas id="licenseChart"></canvas></div>
             <div class="mt-4 text-xs text-gray-500 text-right" id="license-update-time">最後更新：讀取中...</div>
         </div>
 
-        <div class="card p-5" onclick="openModal('powerChart', '指標六：電網備轉容量率', 'power-badge')">
+        <div class="card p-5" onclick="openModal('powerChart', '指標六：電網備轉容量 (%)', 'power-badge')">
             <div class="flex flex-col justify-between items-start mb-4">
-                <h2 class="text-lg font-semibold border-l-4 border-yellow-600 pl-3 mb-2">指標六：電網備轉容量</h2>
+                <h2 class="text-lg font-semibold border-l-4 border-yellow-600 pl-3 mb-2">指標六：電網備轉容量 (%)</h2>
                 <span id="power-badge" class="px-3 py-1 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
             </div>
             <div class="relative h-48 w-full"><canvas id="powerChart"></canvas></div>
             <div class="mt-4 text-xs text-gray-500 text-right" id="power-update-time">最後更新：讀取中...</div>
         </div>
 
-        <div class="card p-5" onclick="openModal('waterChart', '指標七：重點水庫蓄水率', 'water-badge')">
+        <div class="card p-5" onclick="openModal('waterChart', '指標七：重點水庫蓄水 (%)', 'water-badge')">
             <div class="flex flex-col justify-between items-start mb-4">
-                <h2 class="text-lg font-semibold border-l-4 border-blue-500 pl-3 mb-2">指標七：重點水庫蓄水</h2>
+                <h2 class="text-lg font-semibold border-l-4 border-blue-500 pl-3 mb-2">指標七：重點水庫蓄水 (%)</h2>
                 <span id="water-badge" class="px-3 py-1 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
             </div>
             <div class="relative h-48 w-full"><canvas id="waterChart"></canvas></div>
             <div class="mt-4 text-xs text-gray-500 text-right" id="water-update-time">最後更新：讀取中...</div>
         </div>
 
-        <div class="card p-5" onclick="openModal('bobaChart', '指標八：複合珍奶物價指數', 'boba-badge')">
+        <div class="card p-5" onclick="openModal('bobaChart', '指標八：複合珍奶指數 (點)', 'boba-badge')">
             <div class="flex flex-col justify-between items-start mb-4">
-                <h2 class="text-lg font-semibold border-l-4 border-orange-500 pl-3 mb-2">指標八：複合珍奶指數</h2>
+                <h2 class="text-lg font-semibold border-l-4 border-orange-500 pl-3 mb-2">指標八：複合珍奶指數 (點)</h2>
                 <span id="boba-badge" class="px-3 py-1 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
             </div>
             <div class="relative h-48 w-full"><canvas id="bobaChart"></canvas></div>
             <div class="mt-4 text-xs text-gray-500 text-right" id="boba-update-time">最後更新：讀取中...</div>
         </div>
 
-        <div class="card p-5" onclick="openModal('lotteryChart', '指標九：公益彩券銷售指數', 'lottery-badge')">
+        <div class="card p-5" onclick="openModal('lotteryChart', '指標九：彩券銷售指數 (點)', 'lottery-badge')">
             <div class="flex flex-col justify-between items-start mb-4">
-                <h2 class="text-lg font-semibold border-l-4 border-pink-500 pl-3 mb-2">指標九：彩券銷售指數</h2>
+                <h2 class="text-lg font-semibold border-l-4 border-pink-500 pl-3 mb-2">指標九：彩券銷售指數 (點)</h2>
                 <span id="lottery-badge" class="px-3 py-1 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
             </div>
             <div class="relative h-48 w-full"><canvas id="lotteryChart"></canvas></div>
             <div class="mt-4 text-xs text-gray-500 text-right" id="lottery-update-time">最後更新：讀取中...</div>
+        </div>
+
+        <div class="card p-5" onclick="openModal('medicalChart', '指標十：醫藥保健指數 (點)', 'medical-badge')">
+            <div class="flex flex-col justify-between items-start mb-4">
+                <h2 class="text-lg font-semibold border-l-4 border-rose-500 pl-3 mb-2">指標十：醫藥保健指數 (點)</h2>
+                <span id="medical-badge" class="px-3 py-1 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
+            </div>
+            <div class="relative h-48 w-full"><canvas id="medicalChart"></canvas></div>
+            <div class="mt-4 text-xs text-gray-500 text-right" id="medical-update-time">最後更新：讀取中...</div>
         </div>
 
     </div>
@@ -136,7 +145,8 @@
             'powerChart': '<strong>資料來源：</strong>經濟部能源署 / 台灣電力公司<br><strong>計算方式：</strong>每日定時擷取政府公告之全台電網當日預估備轉容量率（%）。',
             'waterChart': '<strong>資料來源：</strong>經濟部水利署<br><strong>計算方式：</strong>每日定時擷取寶山第二水庫、石門水庫、曾文水庫之最新有效蓄水百分比，計算算術平均值。',
             'bobaChart': '<strong>資料來源：</strong>行政院主計總處 (60%) + 實體指標連鎖店 (40%)<br><strong>計算方式：</strong>將官方 CPI 飲料指數與民間實際手搖飲價格變化，以 60/40 權重融合計算之真實通膨觀測指標。',
-            'lotteryChart': '<strong>資料來源：</strong>財政部 / 國發會 OpenAPI<br><strong>計算方式：</strong>追蹤台灣公益彩券銷售總額指數。作為民間消費力與基層通膨焦慮之反週期觀測指標。'
+            'lotteryChart': '<strong>資料來源：</strong>財政部 / 國發會 OpenAPI<br><strong>計算方式：</strong>追蹤台灣公益彩券銷售總額指數。作為民間消費力與基層通膨焦慮之反週期觀測指標。',
+            'medicalChart': '<strong>資料來源：</strong>行政院主計總處 (CPI-醫藥保健類)<br><strong>計算方式：</strong>定期擷取官方發布之醫藥保健類物價指數。<br><strong>指標意義：</strong>追蹤掛號費、健保與自費醫療之真實通膨，反映超高齡社會下民眾最沉重的隱性生活成本。'
         };
 
         const chartOptions = { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { min: 0, grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#888' } }, x: { grid: { display: false }, ticks: { color: '#888' } } } };
@@ -148,6 +158,7 @@
                 
                 let opts = JSON.parse(JSON.stringify(chartOptions));
                 if (isWater) opts.scales.y.max = 100;
+                // 黃金動態縮放
                 if (chartId === 'goldChart') delete opts.scales.y.min;
 
                 let chartConfig = { type: 'line', data: { labels: data.history_labels, datasets: [{ data: data.history_data, borderColor: borderColor, backgroundColor: bgColor, borderWidth: 3, fill: true, tension: 0.4, pointRadius: 1 }] }, options: opts };
@@ -173,17 +184,20 @@
         function closeModal() { document.getElementById('modal').style.display = 'none'; }
         document.getElementById('modal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
 
-        safeFetch('brent_data.json', 'brent-badge', 'brent-update-time', 'brentChart', 'current_price', ' 美元', '#14B8A6', 'rgba(20, 184, 166, 0.15)');
-        safeFetch('gasoline_data.json', 'gasoline-badge', 'gasoline-update-time', 'gasolineChart', 'current_price', ' 元', '#DC2626', 'rgba(220, 38, 38, 0.15)');
-        safeFetch('gold_data.json', 'gold-badge', 'gold-update-time', 'goldChart', 'current_price', ' 元', '#FBBF24', 'rgba(251, 191, 36, 0.15)');
+        safeFetch('brent_data.json', 'brent-badge', 'brent-update-time', 'brentChart', 'current_price', '', '#14B8A6', 'rgba(20, 184, 166, 0.15)');
+        safeFetch('gasoline_data.json', 'gasoline-badge', 'gasoline-update-time', 'gasolineChart', 'current_price', '', '#DC2626', 'rgba(220, 38, 38, 0.15)');
+        safeFetch('gold_data.json', 'gold-badge', 'gold-update-time', 'goldChart', 'current_price', '', '#FBBF24', 'rgba(251, 191, 36, 0.15)');
         
-        safeFetch('construction_data.json', 'const-badge', 'const-update-time', 'constChart', 'average_cost_index', ' 點', '#A855F7', 'rgba(168, 85, 247, 0.15)');
-        safeFetch('license_data.json', 'license-badge', 'license-update-time', 'licenseChart', 'current_value', ' 點', '#10B981', 'rgba(16, 185, 129, 0.15)');
-        safeFetch('power_data.json', 'power-badge', 'power-update-time', 'powerChart', 'average_reserve_rate', ' %', '#D97706', 'rgba(217, 119, 6, 0.15)');
+        safeFetch('construction_data.json', 'const-badge', 'const-update-time', 'constChart', 'average_cost_index', '', '#A855F7', 'rgba(168, 85, 247, 0.15)');
+        safeFetch('license_data.json', 'license-badge', 'license-update-time', 'licenseChart', 'current_value', '', '#10B981', 'rgba(16, 185, 129, 0.15)');
+        safeFetch('power_data.json', 'power-badge', 'power-update-time', 'powerChart', 'average_reserve_rate', '', '#D97706', 'rgba(217, 119, 6, 0.15)');
         
-        safeFetch('water_data.json', 'water-badge', 'water-update-time', 'waterChart', 'average_storage_rate', ' %', '#3B82F6', 'rgba(59, 130, 246, 0.15)', true);
-        safeFetch('boba_data.json', 'boba-badge', 'boba-update-time', 'bobaChart', 'current_index', ' 點', '#F97316', 'rgba(249, 115, 22, 0.15)');
-        safeFetch('lottery_data.json', 'lottery-badge', 'lottery-update-time', 'lotteryChart', 'current_value', ' 點', '#EC4899', 'rgba(236, 72, 153, 0.15)');
+        safeFetch('water_data.json', 'water-badge', 'water-update-time', 'waterChart', 'average_storage_rate', '', '#3B82F6', 'rgba(59, 130, 246, 0.15)', true);
+        safeFetch('boba_data.json', 'boba-badge', 'boba-update-time', 'bobaChart', 'current_index', '', '#F97316', 'rgba(249, 115, 22, 0.15)');
+        safeFetch('lottery_data.json', 'lottery-badge', 'lottery-update-time', 'lotteryChart', 'current_value', '', '#EC4899', 'rgba(236, 72, 153, 0.15)');
+        
+        // 新增第十顆引擎：醫藥保健指數
+        safeFetch('medical_data.json', 'medical-badge', 'medical-update-time', 'medicalChart', 'current_value', '', '#F43F5E', 'rgba(244, 63, 94, 0.15)');
     </script>
 </body>
 </html>
