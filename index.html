@@ -73,45 +73,54 @@
             <div class="mt-4 text-xs text-gray-500 text-right" id="license-update-time">最後更新：讀取中...</div>
         </div>
 
-        <div class="card p-5" onclick="openModal('powerChart', '指標六：電網備轉容量 (%)', 'power-badge')">
+        <div class="card p-5" onclick="openModal('housingChart', '指標六：房屋買賣移轉 (棟)', 'housing-badge')">
             <div class="flex flex-col justify-between items-start mb-4">
-                <h2 class="text-lg font-semibold border-l-4 border-yellow-600 pl-3 mb-2">指標六：電網備轉容量 (%)</h2>
+                <h2 class="text-lg font-semibold border-l-4 border-indigo-500 pl-3 mb-2">指標六：房屋買賣移轉 (棟)</h2>
+                <span id="housing-badge" class="px-3 py-1 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
+            </div>
+            <div class="relative h-48 w-full"><canvas id="housingChart"></canvas></div>
+            <div class="mt-4 text-xs text-gray-500 text-right" id="housing-update-time">最後更新：讀取中...</div>
+        </div>
+
+        <div class="card p-5" onclick="openModal('powerChart', '指標七：電網備轉容量 (%)', 'power-badge')">
+            <div class="flex flex-col justify-between items-start mb-4">
+                <h2 class="text-lg font-semibold border-l-4 border-yellow-600 pl-3 mb-2">指標七：電網備轉容量 (%)</h2>
                 <span id="power-badge" class="px-3 py-1 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
             </div>
             <div class="relative h-48 w-full"><canvas id="powerChart"></canvas></div>
             <div class="mt-4 text-xs text-gray-500 text-right" id="power-update-time">最後更新：讀取中...</div>
         </div>
 
-        <div class="card p-5" onclick="openModal('waterChart', '指標七：重點水庫蓄水 (%)', 'water-badge')">
+        <div class="card p-5" onclick="openModal('waterChart', '指標八：重點水庫蓄水 (%)', 'water-badge')">
             <div class="flex flex-col justify-between items-start mb-4">
-                <h2 class="text-lg font-semibold border-l-4 border-blue-500 pl-3 mb-2">指標七：重點水庫蓄水 (%)</h2>
+                <h2 class="text-lg font-semibold border-l-4 border-blue-500 pl-3 mb-2">指標八：重點水庫蓄水 (%)</h2>
                 <span id="water-badge" class="px-3 py-1 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
             </div>
             <div class="relative h-48 w-full"><canvas id="waterChart"></canvas></div>
             <div class="mt-4 text-xs text-gray-500 text-right" id="water-update-time">最後更新：讀取中...</div>
         </div>
 
-        <div class="card p-5" onclick="openModal('bobaChart', '指標八：複合珍奶指數 (點)', 'boba-badge')">
+        <div class="card p-5" onclick="openModal('bobaChart', '指標九：複合珍奶指數 (點)', 'boba-badge')">
             <div class="flex flex-col justify-between items-start mb-4">
-                <h2 class="text-lg font-semibold border-l-4 border-orange-500 pl-3 mb-2">指標八：複合珍奶指數 (點)</h2>
+                <h2 class="text-lg font-semibold border-l-4 border-orange-500 pl-3 mb-2">指標九：複合珍奶指數 (點)</h2>
                 <span id="boba-badge" class="px-3 py-1 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
             </div>
             <div class="relative h-48 w-full"><canvas id="bobaChart"></canvas></div>
             <div class="mt-4 text-xs text-gray-500 text-right" id="boba-update-time">最後更新：讀取中...</div>
         </div>
 
-        <div class="card p-5" onclick="openModal('lotteryChart', '指標九：彩券銷售指數 (點)', 'lottery-badge')">
+        <div class="card p-5" onclick="openModal('lotteryChart', '指標十：彩券銷售指數 (點)', 'lottery-badge')">
             <div class="flex flex-col justify-between items-start mb-4">
-                <h2 class="text-lg font-semibold border-l-4 border-pink-500 pl-3 mb-2">指標九：彩券銷售指數 (點)</h2>
+                <h2 class="text-lg font-semibold border-l-4 border-pink-500 pl-3 mb-2">指標十：彩券銷售指數 (點)</h2>
                 <span id="lottery-badge" class="px-3 py-1 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
             </div>
             <div class="relative h-48 w-full"><canvas id="lotteryChart"></canvas></div>
             <div class="mt-4 text-xs text-gray-500 text-right" id="lottery-update-time">最後更新：讀取中...</div>
         </div>
 
-        <div class="card p-5" onclick="openModal('medicalChart', '指標十：醫藥保健指數 (點)', 'medical-badge')">
+        <div class="card p-5" onclick="openModal('medicalChart', '指標十一：醫藥保健指數 (點)', 'medical-badge')">
             <div class="flex flex-col justify-between items-start mb-4">
-                <h2 class="text-lg font-semibold border-l-4 border-rose-500 pl-3 mb-2">指標十：醫藥保健指數 (點)</h2>
+                <h2 class="text-lg font-semibold border-l-4 border-rose-500 pl-3 mb-2">指標十一：醫藥保健指數 (點)</h2>
                 <span id="medical-badge" class="px-3 py-1 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
             </div>
             <div class="relative h-48 w-full"><canvas id="medicalChart"></canvas></div>
@@ -142,6 +151,7 @@
             'goldChart': '<strong>資料來源：</strong>台灣銀行 (歷史牌告價)<br><strong>計算方式：</strong>每日擷取台灣銀行公告之「臺銀金鑽條塊 (1台兩)」本行賣出價。<br><strong>指標意義：</strong>相較於國際期貨，此數據包含實體黃金鑄造與進口溢價，反映台灣民間最真實之終端避險資產價格。',
             'constChart': '<strong>資料來源：</strong>行政院主計總處<br><strong>計算方式：</strong>定期擷取最新發布之營造工程物價總指數。',
             'licenseChart': '<strong>資料來源：</strong>內政部國土管理署 / 統計處<br><strong>計算方式：</strong>彙整並追蹤全台當期核發建築物使用執照之趨勢指數。',
+            'housingChart': '<strong>資料來源：</strong>內政部 / 國發會 OpenAPI<br><strong>計算方式：</strong>定期擷取全台建物買賣移轉棟數。<br><strong>指標意義：</strong>房地產市場熱度與交屋潮之溫度計，高度牽動後續裝潢修繕與防水漏水工程之實體需求。',
             'powerChart': '<strong>資料來源：</strong>經濟部能源署 / 台灣電力公司<br><strong>計算方式：</strong>每日定時擷取政府公告之全台電網當日預估備轉容量率（%）。',
             'waterChart': '<strong>資料來源：</strong>經濟部水利署<br><strong>計算方式：</strong>每日定時擷取寶山第二水庫、石門水庫、曾文水庫之最新有效蓄水百分比，計算算術平均值。',
             'bobaChart': '<strong>資料來源：</strong>行政院主計總處 (60%) + 實體指標連鎖店 (40%)<br><strong>計算方式：</strong>將官方 CPI 飲料指數與民間實際手搖飲價格變化，以 60/40 權重融合計算之真實通膨觀測指標。',
@@ -158,8 +168,7 @@
                 
                 let opts = JSON.parse(JSON.stringify(chartOptions));
                 if (isWater) opts.scales.y.max = 100;
-                // 黃金動態縮放
-                if (chartId === 'goldChart') delete opts.scales.y.min;
+                if (chartId === 'goldChart' || chartId === 'housingChart') delete opts.scales.y.min; // 解除限制，讓動態縮放
 
                 let chartConfig = { type: 'line', data: { labels: data.history_labels, datasets: [{ data: data.history_data, borderColor: borderColor, backgroundColor: bgColor, borderWidth: 3, fill: true, tension: 0.4, pointRadius: 1 }] }, options: opts };
                 
@@ -190,13 +199,14 @@
         
         safeFetch('construction_data.json', 'const-badge', 'const-update-time', 'constChart', 'average_cost_index', '', '#A855F7', 'rgba(168, 85, 247, 0.15)');
         safeFetch('license_data.json', 'license-badge', 'license-update-time', 'licenseChart', 'current_value', '', '#10B981', 'rgba(16, 185, 129, 0.15)');
+        // 新增第十一顆引擎：房屋買賣移轉 (使用科技感的靛藍色)
+        safeFetch('housing_transfer_data.json', 'housing-badge', 'housing-update-time', 'housingChart', 'current_value', '', '#6366F1', 'rgba(99, 102, 241, 0.15)');
+
         safeFetch('power_data.json', 'power-badge', 'power-update-time', 'powerChart', 'average_reserve_rate', '', '#D97706', 'rgba(217, 119, 6, 0.15)');
-        
         safeFetch('water_data.json', 'water-badge', 'water-update-time', 'waterChart', 'average_storage_rate', '', '#3B82F6', 'rgba(59, 130, 246, 0.15)', true);
         safeFetch('boba_data.json', 'boba-badge', 'boba-update-time', 'bobaChart', 'current_index', '', '#F97316', 'rgba(249, 115, 22, 0.15)');
-        safeFetch('lottery_data.json', 'lottery-badge', 'lottery-update-time', 'lotteryChart', 'current_value', '', '#EC4899', 'rgba(236, 72, 153, 0.15)');
         
-        // 新增第十顆引擎：醫藥保健指數
+        safeFetch('lottery_data.json', 'lottery-badge', 'lottery-update-time', 'lotteryChart', 'current_value', '', '#EC4899', 'rgba(236, 72, 153, 0.15)');
         safeFetch('medical_data.json', 'medical-badge', 'medical-update-time', 'medicalChart', 'current_value', '', '#F43F5E', 'rgba(244, 63, 94, 0.15)');
     </script>
 </body>
