@@ -12,7 +12,6 @@
         .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.5); border-color: #4b5563; }
         .neutral-badge { background-color: #2d333b; color: #e2e8f0; border: 1px solid #475569; }
         
-        /* 彈出視窗 */
         #modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 50; padding: 20px; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         #modal-content { background: #1a1d24; width: 100%; max-width: 900px; border-radius: 12px; padding: 30px; position: relative; border: 1px solid #475569; }
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 32px; cursor: pointer; color: #94a3b8; }
@@ -47,9 +46,9 @@
             <div class="mt-4 text-xs text-gray-500 text-right" id="gasoline-update-time">最後更新：讀取中...</div>
         </div>
 
-        <div class="card p-5" onclick="openModal('goldChart', '指標三：國際黃金 (新台幣/台兩)', 'gold-badge')">
+        <div class="card p-5" onclick="openModal('goldChart', '指標三：實體黃金賣出價 (新台幣/台兩)', 'gold-badge')">
             <div class="flex flex-col justify-between items-start mb-4">
-                <h2 class="text-lg font-semibold border-l-4 border-yellow-400 pl-3 mb-2">指標三：黃金現貨 (10年)</h2>
+                <h2 class="text-lg font-semibold border-l-4 border-yellow-400 pl-3 mb-2">指標三：實體黃金 (10年)</h2>
                 <span id="gold-badge" class="px-3 py-1 text-sm font-bold rounded-full neutral-badge">讀取中...</span>
             </div>
             <div class="relative h-48 w-full"><canvas id="goldChart"></canvas></div>
@@ -120,7 +119,6 @@
                 <span id="modal-badge" class="px-4 py-1.5 text-md font-bold rounded-full neutral-badge">數值</span>
             </div>
             <p id="modal-desc" class="text-sm text-gray-300 mb-6 bg-gray-800 p-4 rounded-lg border border-gray-700 leading-relaxed"></p>
-            
             <div class="relative h-80 md:h-96 w-full"><canvas id="modalChart"></canvas></div>
         </div>
     </div>
@@ -129,11 +127,10 @@
         const chartDataStore = {};
         let modalChartInstance = null;
 
-        // 指標說明文案庫
         const descriptions = {
             'brentChart': '<strong>資料來源：</strong>Yahoo Finance (國際期貨市場)<br><strong>計算方式：</strong>定期擷取布蘭特原油期貨最新結算價格。作為全球通膨源頭與大宗物資之先期觀測指標。',
             'gasolineChart': '<strong>資料來源：</strong>台灣中油股份有限公司<br><strong>計算方式：</strong>定期擷取中油公告之 95 無鉛汽油每週零售價格。作為實體物流運輸與營造機具變動成本之觀測基準。',
-            'goldChart': 'goldChart': '<strong>資料來源：</strong>台灣銀行 (歷史牌告價)<br><strong>計算方式：</strong>每日擷取台灣銀行公告之「臺銀金鑽條塊 (1台兩)」本行賣出價。<br><strong>指標意義：</strong>相較於國際期貨，此數據包含實體黃金鑄造與進口溢價，反映台灣民間最真實之終端避險資產價格。',,
+            'goldChart': '<strong>資料來源：</strong>台灣銀行 (歷史牌告價)<br><strong>計算方式：</strong>每日擷取台灣銀行公告之「臺銀金鑽條塊 (1台兩)」本行賣出價。<br><strong>指標意義：</strong>相較於國際期貨，此數據包含實體黃金鑄造與進口溢價，反映台灣民間最真實之終端避險資產價格。',
             'constChart': '<strong>資料來源：</strong>行政院主計總處<br><strong>計算方式：</strong>定期擷取最新發布之營造工程物價總指數。',
             'licenseChart': '<strong>資料來源：</strong>內政部國土管理署 / 統計處<br><strong>計算方式：</strong>彙整並追蹤全台當期核發建築物使用執照之趨勢指數。',
             'powerChart': '<strong>資料來源：</strong>經濟部能源署 / 台灣電力公司<br><strong>計算方式：</strong>每日定時擷取政府公告之全台電網當日預估備轉容量率（%）。',
@@ -151,7 +148,6 @@
                 
                 let opts = JSON.parse(JSON.stringify(chartOptions));
                 if (isWater) opts.scales.y.max = 100;
-                // 【關鍵點】如果是黃金，解除 Y 軸從 0 開始的限制，讓它動態縮放！
                 if (chartId === 'goldChart') delete opts.scales.y.min;
 
                 let chartConfig = { type: 'line', data: { labels: data.history_labels, datasets: [{ data: data.history_data, borderColor: borderColor, backgroundColor: bgColor, borderWidth: 3, fill: true, tension: 0.4, pointRadius: 1 }] }, options: opts };
@@ -165,7 +161,6 @@
             document.getElementById('modal').style.display = 'flex';
             document.getElementById('modal-title').innerText = title;
             document.getElementById('modal-badge').innerText = document.getElementById(badgeId).innerText;
-            // 寫入對應的說明文案
             document.getElementById('modal-desc').innerHTML = descriptions[chartId];
             
             if (modalChartInstance) modalChartInstance.destroy();
@@ -178,7 +173,6 @@
         function closeModal() { document.getElementById('modal').style.display = 'none'; }
         document.getElementById('modal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
 
-        // 九大引擎發動！
         safeFetch('brent_data.json', 'brent-badge', 'brent-update-time', 'brentChart', 'current_price', ' 美元', '#14B8A6', 'rgba(20, 184, 166, 0.15)');
         safeFetch('gasoline_data.json', 'gasoline-badge', 'gasoline-update-time', 'gasolineChart', 'current_price', ' 元', '#DC2626', 'rgba(220, 38, 38, 0.15)');
         safeFetch('gold_data.json', 'gold-badge', 'gold-update-time', 'goldChart', 'current_price', ' 元', '#FBBF24', 'rgba(251, 191, 36, 0.15)');
