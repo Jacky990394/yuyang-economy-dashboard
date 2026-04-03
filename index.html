@@ -71,8 +71,17 @@
             { id: 'water_s', title: '指標十五：南部民生水庫 (%)', file: 'water_south_data.json', key: 'current_value', color: '#F87171', dynamicY: false, isWater: true, desc: '<strong>資料來源：</strong>水利署<br><strong>意義：</strong>曾文、南化等南部主力民生水庫蓄水率。' },
             
             // 【第六排：金融資金成本】
-            { id: 'deposit', title: '指標十六：一年期定存利率 (%)', file: 'deposit_rate_data.json', key: 'current_value', color: '#8B5CF6', dynamicY: false, desc: '<strong>資料來源：</strong>台灣銀行/央行<br><strong>意義：</strong>反映國內資金成本與無風險利率基準。升息代表資金緊縮，降息代表資金寬鬆，為總體經濟與房地產之核心地心引力。' }
+            { id: 'deposit', title: '指標十六：一年期定存利率 (%)', file: 'deposit_rate_data.json', key: 'current_value', color: '#8B5CF6', dynamicY: false, desc: '<strong>資料來源：</strong>台灣銀行/央行<br><strong>意義：</strong>反映國內資金成本與無風險利率基準。升息代表資金緊縮，降息代表資金寬鬆，為總體經濟與房地產之核心地心引力。' },
+
+            // 【第七排：UACJK 跨國資金利率】
+            { id: 'dep_us', title: '指標十七：美國定存利率 (%)', file: 'depositUACJK_US.json', key: 'current_value', color: '#1D4ED8', dynamicY: false, desc: '<strong>資料來源：</strong>聯準會(Fed)<br><strong>意義：</strong>全球資金霸主，決定美元強弱與原物料定價。' },
+            { id: 'dep_au', title: '指標十八：澳洲定存利率 (%)', file: 'depositUACJK_AU.json', key: 'current_value', color: '#047857', dynamicY: false, desc: '<strong>資料來源：</strong>澳洲央行(RBA)<br><strong>意義：</strong>原物料出口大國，與礦產建材成本息息相關。' },
+            { id: 'dep_cn', title: '指標十九：中國定存利率 (%)', file: 'depositUACJK_CN.json', key: 'current_value', color: '#DC2626', dynamicY: false, desc: '<strong>資料來源：</strong>中國人民銀行<br><strong>意義：</strong>亞洲最大實體經濟體，降息代表刺激內需經濟。' },
+            { id: 'dep_jp', title: '指標二十：日本定存利率 (%)', file: 'depositUACJK_JP.json', key: 'current_value', color: '#BE185D', dynamicY: false, desc: '<strong>資料來源：</strong>日本央行(BOJ)<br><strong>意義：</strong>亞洲資金避風港，零利率終結將影響亞洲熱錢。' },
+            { id: 'dep_kr', title: '指標廿一：韓國定存利率 (%)', file: 'depositUACJK_KR.json', key: 'current_value', color: '#4338CA', dynamicY: false, desc: '<strong>資料來源：</strong>韓國央行(BOK)<br><strong>意義：</strong>出口導向國，與台灣產業競爭資金最直接。' }
         ];
+
+
         // =========================================================================
 
         const chartDataStore = {};
