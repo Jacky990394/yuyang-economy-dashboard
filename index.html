@@ -44,9 +44,9 @@
         // =========================================================================
         // 🟢🟢🟢 總司令部：未來新增指標，只要在這裡「複製貼上一行」即可 🟢🟢🟢
         // =========================================================================
-        const indicatorRegistry = [
+       const indicatorRegistry = [
             // 【第一排：宏觀與能源】
-            { id: 'brent', title: '指標一：布蘭特原油 (美元/桶)', file: 'brent_data.json', key: 'current_price', color: '#14B8A6', dynamicY: false, desc: '<strong>資料來源：</strong>Yahoo Finance<br><strong>意義：</strong>全球通膨源頭與大宗物資之先期觀測指標。' },
+            { id: 'brent', title: '指標一：布蘭特原油 (美元/桶)', file: 'brent_data.json', key: 'current_price', color: '#14B8A6', dynamicY: false, desc: '<strong>資料來源：</strong>Yahoo  Finance<br><strong>意義：</strong>全球通膨源頭與大宗物資之先期觀測指標。' },
             { id: 'gasoline', title: '指標二：95 無鉛汽油 (元/公升)', file: 'gasoline_data.json', key: 'current_price', color: '#DC2626', dynamicY: false, desc: '<strong>資料來源：</strong>台灣中油<br><strong>意義：</strong>實體物流運輸與營造機具變動成本之觀測基準。' },
             { id: 'gold', title: '指標三：實體黃金 (新台幣/台兩)', file: 'gold_data.json', key: 'current_price', color: '#FBBF24', dynamicY: true, desc: '<strong>資料來源：</strong>台灣銀行<br><strong>意義：</strong>反映台灣民間最真實之終端避險資產價格。' },
             
@@ -58,13 +58,19 @@
             // 【第三排：房市需求與環境基礎】
             { id: 'housing', title: '指標七：房屋買賣移轉 (棟)', file: 'housing_transfer_data.json', key: 'current_value', color: '#6366F1', dynamicY: true, desc: '<strong>資料來源：</strong>內政部<br><strong>意義：</strong>房市熱度溫度計，牽動防水漏水工程需求。' },
             { id: 'power', title: '指標八：電網備轉容量 (%)', file: 'power_data.json', key: 'average_reserve_rate', color: '#D97706', dynamicY: false, desc: '<strong>資料來源：</strong>台電<br><strong>意義：</strong>電網供電充裕度指標。' },
-            { id: 'water', title: '指標九：重點水庫蓄水 (%)', file: 'water_data.json', key: 'average_storage_rate', color: '#3B82F6', dynamicY: false, desc: '<strong>資料來源：</strong>水利署<br><strong>意義：</strong>重點水庫蓄水率平均。', isWater: true },
+            { id: 'water', title: '指標九：重點水庫綜合蓄水 (%)', file: 'water_data.json', key: 'average_storage_rate', color: '#3B82F6', dynamicY: false, isWater: true, desc: '<strong>資料來源：</strong>水利署<br><strong>意義：</strong>包含寶山第二、石門、曾文等全台重點水庫之平均蓄水率。' },
 
-            // 【第四排：民生通膨與消費心理】
+            // 【第四排：民生通膨與區域水情】
             { id: 'boba', title: '指標十：複合珍奶指數 (點)', file: 'boba_data.json', key: 'current_index', color: '#F97316', dynamicY: false, desc: '<strong>資料來源：</strong>主計總處+民間<br><strong>意義：</strong>真實通膨觀測指標。' },
             { id: 'lottery', title: '指標十一：彩券銷售指數 (點)', file: 'lottery_data.json', key: 'current_value', color: '#EC4899', dynamicY: false, desc: '<strong>資料來源：</strong>財政部<br><strong>意義：</strong>民間消費力與基層通膨焦慮之反週期指標。' },
-            { id: 'medical', title: '指標十二：醫藥保健指數 (點)', file: 'medical_data.json', key: 'current_value', color: '#F43F5E', dynamicY: false, desc: '<strong>資料來源：</strong>主計總處<br><strong>意義：</strong>追蹤掛號費與自費醫療之真實通膨。' }
+            { id: 'medical', title: '指標十二：醫藥保健指數 (點)', file: 'medical_data.json', key: 'current_value', color: '#F43F5E', dynamicY: false, desc: '<strong>資料來源：</strong>主計總處<br><strong>意義：</strong>追蹤掛號費與自費醫療之真實通膨。' },
+
+            // 【第五排：北中南細部分析 (新擴充)】
+            { id: 'water_n', title: '指標十三：北部民生水庫 (%)', file: 'water_north_data.json', key: 'current_value', color: '#60A5FA', dynamicY: false, isWater: true, desc: '<strong>資料來源：</strong>水利署<br><strong>意義：</strong>翡翠、石門等北部主力民生水庫蓄水率。' },
+            { id: 'water_c', title: '指標十四：中部民生水庫 (%)', file: 'water_central_data.json', key: 'current_value', color: '#34D399', dynamicY: false, isWater: true, desc: '<strong>資料來源：</strong>水利署<br><strong>意義：</strong>鯉魚潭、德基等中部主力民生水庫蓄水率。' },
+            { id: 'water_s', title: '指標十五：南部民生水庫 (%)', file: 'water_south_data.json', key: 'current_value', color: '#F87171', dynamicY: false, isWater: true, desc: '<strong>資料來源：</strong>水利署<br><strong>意義：</strong>曾文、南化等南部主力民生水庫蓄水率。' }
         ];
+
         // =========================================================================
 
         const chartDataStore = {};
