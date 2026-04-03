@@ -43,6 +43,7 @@ jobs:
         python update_deposit_rate.py
         python update_depositUACJK.py
         python update_steel.py
+        python update_materials.py
 
     - name: 5. 將最新數據寫回雲端展示窗
       run: |
