@@ -41,6 +41,7 @@ jobs:
         python update_floor_area.py
         python update_regional_water.py
         python update_deposit_rate.py
+        python update_depositUACJK.py
 
     - name: 5. 將最新數據寫回雲端展示窗
       run: |
