@@ -46,7 +46,7 @@
         // =========================================================================
        const indicatorRegistry = [
             // 【第一排：宏觀與能源】
-            { id: 'brent', title: '指標一：布蘭特原油 (美元/桶)', file: 'brent_data.json', key: 'current_price', color: '#14B8A6', dynamicY: false, desc: '<strong>資料來源：</strong>Yahoo  Finance<br><strong>意義：</strong>全球通膨源頭與大宗物資之先期觀測指標。' },
+            { id: 'brent', title: '指標一：布蘭特原油 (美元/桶)', file: 'brent_data.json', key: 'current_price', color: '#14B8A6', dynamicY: false, desc: '<strong>資料來源：</strong>Yahoo Finance<br><strong>意義：</strong>全球通膨源頭與大宗物資之先期觀測指標。' },
             { id: 'gasoline', title: '指標二：95 無鉛汽油 (元/公升)', file: 'gasoline_data.json', key: 'current_price', color: '#DC2626', dynamicY: false, desc: '<strong>資料來源：</strong>台灣中油<br><strong>意義：</strong>實體物流運輸與營造機具變動成本之觀測基準。' },
             { id: 'gold', title: '指標三：實體黃金 (新台幣/台兩)', file: 'gold_data.json', key: 'current_price', color: '#FBBF24', dynamicY: true, desc: '<strong>資料來源：</strong>台灣銀行<br><strong>意義：</strong>反映台灣民間最真實之終端避險資產價格。' },
             
@@ -65,25 +65,21 @@
             { id: 'lottery', title: '指標十一：彩券銷售指數 (點)', file: 'lottery_data.json', key: 'current_value', color: '#EC4899', dynamicY: false, desc: '<strong>資料來源：</strong>財政部<br><strong>意義：</strong>民間消費力與基層通膨焦慮之反週期指標。' },
             { id: 'medical', title: '指標十二：醫藥保健指數 (點)', file: 'medical_data.json', key: 'current_value', color: '#F43F5E', dynamicY: false, desc: '<strong>資料來源：</strong>主計總處<br><strong>意義：</strong>追蹤掛號費與自費醫療之真實通膨。' },
 
-           // 【第五排：北中南細部分析 (新擴充)】
+            // 【第五排：北中南細部分析】
             { id: 'water_n', title: '指標十三：北部民生水庫 (%)', file: 'water_north_data.json', key: 'current_value', color: '#60A5FA', dynamicY: false, isWater: true, desc: '<strong>資料來源：</strong>水利署<br><strong>意義：</strong>翡翠、石門等北部主力民生水庫蓄水率。' },
             { id: 'water_c', title: '指標十四：中部民生水庫 (%)', file: 'water_central_data.json', key: 'current_value', color: '#34D399', dynamicY: false, isWater: true, desc: '<strong>資料來源：</strong>水利署<br><strong>意義：</strong>鯉魚潭、德基等中部主力民生水庫蓄水率。' },
-            { id: 'water_s', title: '指標十五：南部民生水庫 (%)', file: 'water_south_data.json', key: 'current_value', color: '#F87171', dynamicY: false, isWater: true, desc: '<strong>資料來源：</strong>水利署<br><strong>意義：</strong>曾文、南化等南部主力民生水庫蓄水率。' }, // <--- 就是這裡！補上逗號了！
+            { id: 'water_s', title: '指標十五：南部民生水庫 (%)', file: 'water_south_data.json', key: 'current_value', color: '#F87171', dynamicY: false, isWater: true, desc: '<strong>資料來源：</strong>水利署<br><strong>意義：</strong>曾文、南化等南部主力民生水庫蓄水率。' },
             
             // 【第六排：金融資金成本】
             { id: 'deposit', title: '指標十六：一年期定存利率 (%)', file: 'deposit_rate_data.json', key: 'current_value', color: '#8B5CF6', dynamicY: false, desc: '<strong>資料來源：</strong>台灣銀行/央行<br><strong>意義：</strong>反映國內資金成本與無風險利率基準。升息代表資金緊縮，降息代表資金寬鬆，為總體經濟與房地產之核心地心引力。' }
         ];
-
-
-        ];
-
         // =========================================================================
 
         const chartDataStore = {};
         let modalChartInstance = null;
         const container = document.getElementById('grid-container');
 
-        // 1. 自動把總司令部的清單，變成網頁上的卡片
+        // 自動生成卡片
         indicatorRegistry.forEach(ind => {
             const cardHTML = `
                 <div class="card p-5" onclick="openModal('${ind.id}', '${ind.title}')">
@@ -98,9 +94,9 @@
             container.innerHTML += cardHTML;
         });
 
-        // 2. 自動去抓取資料並畫圖
         const chartOptions = { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { min: 0, grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#888' } }, x: { grid: { display: false }, ticks: { color: '#888' } } } };
 
+        // 自動抓取資料
         indicatorRegistry.forEach(ind => {
             fetch(ind.file).then(r => r.ok ? r.json() : Promise.reject("未找到")).then(data => {
                 document.getElementById(`${ind.id}-time`).innerText = "更新：" + data.update_time;
@@ -117,7 +113,7 @@
             }).catch(e => { document.getElementById(`${ind.id}-badge`).innerText = "⚠️ 讀取失敗"; });
         });
 
-        // 3. 放大視窗邏輯
+        // 放大視窗邏輯
         function openModal(id, title) {
             const store = chartDataStore[id];
             if (!store) return;
