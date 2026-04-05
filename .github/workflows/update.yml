@@ -44,6 +44,7 @@ jobs:
         python update_depositUACJK.py
         python update_steel.py
         python update_materials.py
+        python update_waste.py
 
     - name: 5. 將最新數據寫回雲端展示窗
       run: |
