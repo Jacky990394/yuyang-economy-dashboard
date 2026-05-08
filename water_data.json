@@ -1,8 +1,8 @@
 {
   "index_name": "水情與工業水庫指數",
-  "update_time": "2026-05-07 01:28:01",
+  "update_time": "2026-05-08 01:30:54",
   "overall_warning_level": "紅燈 (警戒 - 限水危機)",
-  "average_storage_rate": 25.0,
+  "average_storage_rate": 25.3,
   "history_labels": [
     "24年4月",
     "5月",
@@ -53,6 +53,6 @@
     60,
     55,
     48,
-    25.0
+    25.3
   ]
 }
